@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'SwiftNetworkLayer_Example' do
+  pod 'SwiftNetworkLayer', :path => '../'
+
+  target 'SwiftNetworkLayer_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
