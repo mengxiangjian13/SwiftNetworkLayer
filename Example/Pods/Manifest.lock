@@ -1,0 +1,23 @@
+PODS:
+  - Alamofire (5.4.3)
+  - SwiftNetworkLayer (0.1.0):
+    - Alamofire (~> 5.4)
+
+DEPENDENCIES:
+  - SwiftNetworkLayer (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+
+EXTERNAL SOURCES:
+  SwiftNetworkLayer:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  SwiftNetworkLayer: 2c2d1150c2a7fa4cc0671fa28d65ca5e6db4209e
+
+PODFILE CHECKSUM: 8270343b8360b9c84b6a64bc2ad3f736770c5633
+
+COCOAPODS: 1.9.3

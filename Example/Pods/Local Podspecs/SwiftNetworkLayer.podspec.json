@@ -1,0 +1,27 @@
+{
+  "name": "SwiftNetworkLayer",
+  "version": "0.1.0",
+  "summary": "A short description of SwiftNetworkLayer.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/mengxiangjian13@163.com/SwiftNetworkLayer",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "mengxiangjian13@163.com": "mengxiangjian13@163.com"
+  },
+  "source": {
+    "git": "https://github.com/mengxiangjian13@163.com/SwiftNetworkLayer.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "SwiftNetworkLayer/Classes/**/*",
+  "dependencies": {
+    "Alamofire": [
+      "~> 5.4"
+    ]
+  }
+}

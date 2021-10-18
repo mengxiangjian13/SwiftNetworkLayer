@@ -9,10 +9,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBAction func makeRequest(_ sender: Any) {
+        viewModel.request {
+            if $0 {
+                
+            } else {
+                
+            }
+        }
+    }
+    
+    let viewModel = ViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
