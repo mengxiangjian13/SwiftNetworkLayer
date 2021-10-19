@@ -9,6 +9,10 @@
 import Foundation
 import SwiftNetworkLayer
 
+struct DecodedObject: Codable {
+    var yesterdayOre: Int
+}
+
 enum ViewRequest: NetworkRequest {
     case home
     
@@ -35,10 +39,13 @@ enum ViewRequest: NetworkRequest {
 
 class ViewModel: NSObject {
     func request(block: (Bool) -> Void) {
-        NetworkManager.get(request: ViewRequest.home) {
+//        NetworkManager.get(request: ViewRequest.home) {
+//            debugPrint($0)
+//        }
+        
+        NetworkManager.get(of: DecodedObject.self,
+                           request: ViewRequest.home) {
             debugPrint($0)
         }
-        
-        
     }
 }

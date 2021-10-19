@@ -43,7 +43,7 @@ struct Request: URLRequestConvertible {
         ]
     }
     
-    private var ssotk = ""
+    private var ssotk = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzY1MTA3MjcsInVpZCI6MTc3NzUzLCJzc291aWQiOiIzMTk5NzU1MDYiLCJzc290ayI6IjEwMlhYWHVzQmlucW01bTNoNWYxdVRueFdtMkxiVzRaZm5BMm0zODdsQ09CTW0zY0YwUW01ODJVUk1qUmM5TXVHOUtPcmdIcVRMOTFVbFk1T3ZqQlN4ZjZ0TDcwdE1pd1dTeWlZRXJaNTNuYXY4THZtM0RPbTV6bkFtNCJ9._Nrm6cugbHnM9ntjcRHDkblZwCrioQvi81xCqeDp-b8"
     
     init(request: NetworkRequest,
          httpMethod: HTTPMethod = .get) {
@@ -80,7 +80,7 @@ struct Request: URLRequestConvertible {
     
     func lejianTK(request: URLRequest) -> String {
         if let query = request.url?.query {
-            let ts = "1634545221"
+            let ts = Int(Date().timeIntervalSince1970)
             let s = "zCezLmB8o76lk\(ts)\(query)"
             let tk = "\(s.md5).\(ts)"
             return tk
