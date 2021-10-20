@@ -25,9 +25,9 @@
 		61C512AD8F750757D127C895253BF49E /* Pods-SwiftNetworkLayer_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBBB3349161683BDB8D868004892CA /* Pods-SwiftNetworkLayer_Example-dummy.m */; };
 		64F86F2B4ADB16DC73FE14EEC77ACAEA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FF301302A2A77E95697F2B5692FA5E /* Alamofire.framework */; };
 		6546D728B69398F93B506845141EBD61 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC45C560942C5BCAB401419728808D3 /* EventMonitor.swift */; };
+		65A11CA4271FC24300C91DEF /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A11CA3271FC24300C91DEF /* NetworkConfig.swift */; };
 		65AE91C52719206A00A9B76C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AE91C42719206A00A9B76C /* NetworkManager.swift */; };
 		65AE91CB271920BB00A9B76C /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AE91CA271920BB00A9B76C /* NetworkRequest.swift */; };
-		65AE91D1271920D900A9B76C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AE91D0271920D900A9B76C /* NetworkError.swift */; };
 		65AE91DF271967CC00A9B76C /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AE91DE271967CC00A9B76C /* NetworkResponse.swift */; };
 		65AE91E527196A9900A9B76C /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AE91E427196A9900A9B76C /* NetworkConfiguration.swift */; };
 		666EC5C8356E6D4448A2FE7BEE77AD88 /* RedirectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EB40D0E4136A2EBA646F9A9D0DA652 /* RedirectHandler.swift */; };
@@ -130,9 +130,9 @@
 		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61F2B90B6F80D8F30747B3E178F5528F /* URLEncodedFormEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLEncodedFormEncoder.swift; path = Source/URLEncodedFormEncoder.swift; sourceTree = "<group>"; };
 		6319528E7182ADC0593E760393BAB7DC /* SwiftNetworkLayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftNetworkLayer.release.xcconfig; sourceTree = "<group>"; };
+		65A11CA3271FC24300C91DEF /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkConfig.swift; path = SwiftNetworkLayer/Classes/NetworkConfig.swift; sourceTree = "<group>"; };
 		65AE91C42719206A00A9B76C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = SwiftNetworkLayer/Classes/NetworkManager.swift; sourceTree = "<group>"; };
 		65AE91CA271920BB00A9B76C /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkRequest.swift; path = SwiftNetworkLayer/Classes/NetworkRequest.swift; sourceTree = "<group>"; };
-		65AE91D0271920D900A9B76C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = SwiftNetworkLayer/Classes/NetworkError.swift; sourceTree = "<group>"; };
 		65AE91DE271967CC00A9B76C /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkResponse.swift; path = SwiftNetworkLayer/Classes/NetworkResponse.swift; sourceTree = "<group>"; };
 		65AE91E427196A9900A9B76C /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		673CB7AF23C7E1475678C8CCC286CF41 /* Result+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Result+Alamofire.swift"; path = "Source/Result+Alamofire.swift"; sourceTree = "<group>"; };
@@ -376,9 +376,9 @@
 			children = (
 				65AE91C42719206A00A9B76C /* NetworkManager.swift */,
 				65AE91CA271920BB00A9B76C /* NetworkRequest.swift */,
-				65AE91D0271920D900A9B76C /* NetworkError.swift */,
 				65AE91DE271967CC00A9B76C /* NetworkResponse.swift */,
 				65AE91E427196A9900A9B76C /* NetworkConfiguration.swift */,
+				65A11CA3271FC24300C91DEF /* NetworkConfig.swift */,
 				7539AD233CD1C96F26F963B4FE920F3E /* Pod */,
 				07A71276A4FCA6B8DCEAC3916B0D9AA7 /* Support Files */,
 			);
@@ -655,9 +655,9 @@
 			files = (
 				65AE91C52719206A00A9B76C /* NetworkManager.swift in Sources */,
 				65AE91DF271967CC00A9B76C /* NetworkResponse.swift in Sources */,
+				65A11CA4271FC24300C91DEF /* NetworkConfig.swift in Sources */,
 				65AE91CB271920BB00A9B76C /* NetworkRequest.swift in Sources */,
 				098097AC440B7076C839EA69D92DD9E3 /* SwiftNetworkLayer-dummy.m in Sources */,
-				65AE91D1271920D900A9B76C /* NetworkError.swift in Sources */,
 				65AE91E527196A9900A9B76C /* NetworkConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

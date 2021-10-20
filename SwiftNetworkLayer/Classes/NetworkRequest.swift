@@ -19,32 +19,6 @@ struct Request: URLRequestConvertible {
     private let info: NetworkRequest
     private let httpMethod: HTTPMethod
     
-    private var isTestAPI = true
-    
-    private var baseURL: URL {
-        if isTestAPI {
-            return URL(string: "http://lej-api-dev.le.com")!
-        }
-        return URL(string: "https://api.leseee.com")!
-    }
-    
-    private var universalGETParams: [String: String] {
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            return ["version": version, "pcode": "210210000"]
-        }
-        return [
-            "pcode": "210210000"
-        ]
-    }
-    
-    private var universalHeaders: HTTPHeaders {
-        return [
-            .accept("application/json")
-        ]
-    }
-    
-    private var ssotk = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzY1MTA3MjcsInVpZCI6MTc3NzUzLCJzc291aWQiOiIzMTk5NzU1MDYiLCJzc290ayI6IjEwMlhYWHVzQmlucW01bTNoNWYxdVRueFdtMkxiVzRaZm5BMm0zODdsQ09CTW0zY0YwUW01ODJVUk1qUmM5TXVHOUtPcmdIcVRMOTFVbFk1T3ZqQlN4ZjZ0TDcwdE1pd1dTeWlZRXJaNTNuYXY4THZtM0RPbTV6bkFtNCJ9._Nrm6cugbHnM9ntjcRHDkblZwCrioQvi81xCqeDp-b8"
-    
     init(request: NetworkRequest,
          httpMethod: HTTPMethod = .get) {
         self.info = request
@@ -52,13 +26,13 @@ struct Request: URLRequestConvertible {
     }
     
     func asURLRequest() throws -> URLRequest {
-        let url = baseURL.appendingPathComponent(info.path)
+        let url = NetworkConfig.baseURL.appendingPathComponent(info.path)
         var request = URLRequest(url: url)
         // http method
         request.httpMethod = self.httpMethod.rawValue
         
         // universal get params
-        if let r = try? URLEncoding.queryString.encode(request, with: universalGETParams) {
+        if let r = try? URLEncoding.queryString.encode(request, with: NetworkConfig.universalGETParams) {
             request = r
         }
         
@@ -70,8 +44,8 @@ struct Request: URLRequestConvertible {
         }
         
         // http headers
-        var headers = universalHeaders
-        headers.add(name: "SSOTK", value: ssotk)
+        var headers = NetworkConfig.universalHeaders
+        headers.add(name: "SSOTK", value: NetworkConfig.ssotk)
         headers.add(name: "TK", value: lejianTK(request: request))
         request.headers = headers
         
@@ -80,7 +54,7 @@ struct Request: URLRequestConvertible {
     
     func lejianTK(request: URLRequest) -> String {
         if let query = request.url?.query {
-            let ts = Int(Date().timeIntervalSince1970)
+            let ts = NetworkConfig.timestamp
             let s = "zCezLmB8o76lk\(ts)\(query)"
             let tk = "\(s.md5).\(ts)"
             return tk

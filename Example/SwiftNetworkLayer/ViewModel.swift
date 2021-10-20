@@ -38,14 +38,21 @@ enum ViewRequest: NetworkRequest {
 }
 
 class ViewModel: NSObject {
-    func request(block: (Bool) -> Void) {
+    func request(block: @escaping (Bool) -> Void) {
 //        NetworkManager.get(request: ViewRequest.home) {
 //            debugPrint($0)
 //        }
         
         NetworkManager.get(of: DecodedObject.self,
                            request: ViewRequest.home) {
-            debugPrint($0)
+            switch $0 {
+            case .success(data: let object):
+                debugPrint(object)
+                block(true)
+            case .failure(let error):
+                debugPrint(error ?? "no error")
+                block(false)
+            }
         }
     }
 }
