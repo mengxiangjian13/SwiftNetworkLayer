@@ -74,3 +74,24 @@ extension String {
         return hash.map { String(format: "%02x", $0) }.joined()
     }
 }
+
+public class Uploader {
+    
+    struct UploadItem {
+        var data: Data
+        var name: String
+        var fileName: String?
+        var mimeType: String?
+    }
+    
+    var items: [UploadItem] = []
+    
+    public func append(_ data: Data,
+                       withName name: String,
+                       fileName: String? = nil,
+                       mimeType: String? = nil) {
+        let item = UploadItem(data: data, name: name,
+                              fileName: fileName, mimeType: mimeType)
+        items.append(item)
+    }
+}

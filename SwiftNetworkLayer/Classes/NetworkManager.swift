@@ -35,6 +35,22 @@ public struct NetworkManager {
                      response: response)
     }
     
+    public static func postFile(request: NetworkRequest,
+                                uploader: @escaping (Uploader) -> Void,
+                                response: @escaping (NetworkResponse<Any>) -> Void) {
+        let r = Request(request: request, httpMethod: .post)
+        let u = Uploader()
+        uploader(u)
+        AF.upload(multipartFormData: {
+            for item in u.items {
+                $0.append(item.data, withName: item.name, fileName: item.fileName, mimeType: item.mimeType)
+            }
+        }, with: r)
+        .responseJSON {
+            response(self.response(from: $0))
+        }
+    }
+    
     
     // MARK: - Private static method
     
@@ -46,26 +62,7 @@ public struct NetworkManager {
         AF.request(r)
             .validate()
             .responseJSON {
-                switch $0.result {
-                case .success(let object):
-                    if let json = object as? [String: Any] {
-                        if let code = json["code"] as? Int,
-                           let message = json["message"] as? String,
-                           let data = json["data"] {
-                            if code == 0 {
-                                response(.success(data: data))
-                            } else {
-                                response(.failure(NSError(domain: "com.network.layer.error",
-                                                        code: code,
-                                                        userInfo: [NSLocalizedDescriptionKey: message])))
-                            }
-                            return
-                        }
-                    }
-                    response(.failure(nil))
-                case .failure(let error):
-                    response(.failure(error))
-                }
+                response(self.response(from: $0))
             }
     }
     
@@ -86,6 +83,30 @@ public struct NetworkManager {
             case .failure(let error):
                 response(.failure(error))
             }
+        }
+    }
+    
+    // MARK: - reponse handler
+    
+    private static func response(from: AFDataResponse<Any>) -> NetworkResponse<Any> {
+        switch from.result {
+        case .success(let object):
+            if let json = object as? [String: Any] {
+                if let code = json["code"] as? Int,
+                   let message = json["message"] as? String,
+                   let data = json["data"] {
+                    if code == 0 {
+                        return .success(data: data)
+                    }
+                    
+                    return .failure(NSError(domain: "com.network.layer.error",
+                                            code: code,
+                                            userInfo: [NSLocalizedDescriptionKey: message]))
+                }
+            }
+            return .failure(nil)
+        case .failure(let error):
+            return .failure(error)
         }
     }
 }
